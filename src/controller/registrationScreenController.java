@@ -13,6 +13,7 @@ import javafx.scene.control.Alert;
 
 import java.sql.*;
 
+
 /**
  * Created by ajspsp on 04/04/18.
  */
@@ -47,17 +48,17 @@ public class registrationScreenController {
 //    }
 
     @FXML
-    private void backPressed() {
+    private void backButtonPressed() {
         mainFXApplication.showWelcomeScreen();
     }
 
     @FXML
-    private void registerPressed() {
+    private void registerButtonPressed() {
         Connection conn = null;
         Statement stmt = null;
         try{
             Class.forName("com.mysql.jdbc.Driver");
-//            conn = DriverManager.getConnection("jdbc:mysql://localhost:8888/bitsplease", "bitsplease", "bitsplease");
+            conn = DriverManager.getConnection("jdbc:mysql:/Applications/MAMP/Library/bin/mysql", "root", "root");
             stmt = conn.createStatement();
             String sql = "SELECT username FROM USER WHERE username = '" + emailTextField.getText().trim() + "'";
             ResultSet rs = stmt.executeQuery(sql);

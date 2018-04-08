@@ -16,6 +16,8 @@ import model.*;
 import javafx.scene.control.Alert;
 
 
+
+
 public class mainFXApplication extends Application{
 
     private Stage mainScreen;
@@ -86,8 +88,61 @@ public class mainFXApplication extends Application{
 
     }
 
-    public void showEmployeeMainApplicationScreen(){
+    public void showPOSScreen() {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(mainFXApplication.class.getResource("../view/POSScreenController.fxml"));
+            Pane MainAppPane = loader.load();
 
+            POSScreenController controller = loader.getController();
+            controller.setMainApp(this);
+
+            Scene scene = new Scene(MainAppPane);
+            mainScreen.setTitle("Registration");
+            mainScreen.setScene(scene);
+            mainScreen.show();
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+
+    }
+
+    public void showInventoryScreen() {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(mainFXApplication.class.getResource("../view/inventoryScreen.fxml"));
+            Pane MainAppPane = loader.load();
+
+            inventoryScreenController controller = loader.getController();
+            controller.setMainApp(this);
+            controller.initialize();
+
+            Scene scene = new Scene(MainAppPane);
+            mainScreen.setTitle("Registration");
+            mainScreen.setScene(scene);
+            mainScreen.show();
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+
+    }
+
+    public void showEmployeeMainApplicationScreen(){
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(mainFXApplication.class.getResource("../view/employeeMainApplicationScreen.fxml"));
+            Pane MainAppPane = loader.load();
+
+            employeeMainApplicationScreenController controller = loader.getController();
+            controller.setMainApp(this);
+
+            Scene scene = new Scene(MainAppPane);
+            mainScreen.setTitle("Registration");
+            mainScreen.setScene(scene);
+            mainScreen.show();
+        } catch (IOException e){
+            e.printStackTrace();
+        }
     }
 
     public Stage getStage(){

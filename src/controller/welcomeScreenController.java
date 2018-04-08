@@ -18,7 +18,6 @@ public class welcomeScreenController {
 
     @FXML
     private TextField email;
-
     @FXML
     private PasswordField passwordField;
 
@@ -28,6 +27,7 @@ public class welcomeScreenController {
     public void setMainApp(mainFXApplication main) {
         mainFXApplication = main;
     }
+
     @FXML
     private void loginButtonPressed() {
 
@@ -35,7 +35,7 @@ public class welcomeScreenController {
         Statement stmt = null;
         try{
             Class.forName("com.mysql.jdbc.Driver");
-            conn = DriverManager.getConnection("jdbc:mysql://db4free.net:3306/bitsplease", "bitsplease", "bitsplease");
+            conn = DriverManager.getConnection("jdbc:mysql://Applications/MAMP/Library/bin/mysql","root","root");
             stmt = conn.createStatement();
             String sql = "SELECT username, password, firstname, lastname, type, email, FROM USER WHERE username = '" + email.getText().trim() + "'";
             ResultSet rs = stmt.executeQuery(sql);
